@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miro & KB's Birthday Party 🎉</title>
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .emoji {
+            font-size: 3em;
+            margin: 20px 0;
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            color: #764ba2;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .details {
+            text-align: left;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .detail-item {
+            margin: 15px 0;
+            font-size: 1.1em;
+            color: #333;
+        }
+        
+        .detail-item strong {
+            color: #667eea;
+            display: inline-block;
+            min-width: 80px;
+        }
+        
+        .rsvp-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        
+        .rsvp-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .rsvp-button:active {
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .subtitle {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emoji">🎂🎉🥳</div>
+        <h1>Miro & KB's Birthday Party!</h1>
+        <p class="subtitle">You're Invited!</p>
+        
+        <div class="details">
+            <div class="detail-item">
+                <strong>🧖 Sauna:</strong> 17:45 - 19:45
+            </div>
+            <div class="detail-item">
+                <strong>🍻 Bar:</strong> After sauna (location TBD)
+            </div>
+            <div class="detail-item">
+                <strong>💌 RSVP:</strong> Click below to let us know you're coming!
+            </div>
+        </div>
+        
+        <button 
+            class="rsvp-button" 
+            data-tally-open="3yWlq4" 
+            data-tally-emoji-text="👋" 
+            data-tally-emoji-animation="wave">
+            RSVP Now 🎈
+        </button>
+    </div>
+</body>
+</html>
