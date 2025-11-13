@@ -11,7 +11,6 @@ const guests = {
         "Lola",
         "Dag-Tore",
         "Daniel",
-        "Hermod",
         "Brage",
         "Emilia Glazebrook",
         "Even Tronstad",
