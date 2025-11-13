@@ -7,7 +7,6 @@ const guests = {
         "Miroslav",
         "Linus Elevinus",
         "Bror",
-        "Magnus Møller",
         "Ingeborg Johanne Henningsdotter Riekeles",
         "Lola",
         "Dag-Tore",
