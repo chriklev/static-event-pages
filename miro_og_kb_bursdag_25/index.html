@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miro og KB's Bursdag 🎉</title>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Vollkorn:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,39 +12,59 @@
             box-sizing: border-box;
         }
 
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes confetti {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
         body {
-            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
-            font-family: 'Vollkorn', serif;
-            color: #3a2a1a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            font-family: 'Poppins', sans-serif;
+            color: #2d3748;
             padding: 20px;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            z-index: 0;
+            animation: confetti 4s linear infinite;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            background: #fef9f3;
-            border-radius: 15px;
-            box-shadow: 
-                0 10px 30px rgba(0,0,0,0.15),
-                inset 0 0 100px rgba(244,228,204,0.3);
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.3),
+                0 0 0 10px rgba(255,255,255,0.1);
             overflow: hidden;
-            border: 3px solid #d4a574;
+            position: relative;
+            z-index: 1;
         }
 
         .banner {
             width: 100%;
-            height: 250px;
+            height: 300px;
             overflow: hidden;
             position: relative;
-            border-bottom: 5px solid #d4a574;
         }
 
         .banner img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: sepia(0.2) contrast(1.1);
         }
 
         .banner::after {
@@ -54,7 +74,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, transparent 60%, rgba(254,249,243,0.8) 100%);
+            background: linear-gradient(to bottom, transparent 40%, rgba(255,255,255,0.9) 100%);
             pointer-events: none;
         }
 
@@ -63,120 +83,234 @@
         }
 
         h1 {
-            font-family: 'Courier Prime', monospace;
-            font-size: 2.5em;
-            color: #c17a3a;
+            font-family: 'Pacifico', cursive;
+            font-size: 3em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-align: center;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 0px rgba(212,165,116,0.3);
-            letter-spacing: 2px;
+            animation: float 3s ease-in-out infinite;
         }
 
         .emoji-line {
             text-align: center;
-            font-size: 2em;
+            font-size: 2.5em;
             margin-bottom: 30px;
-            filter: sepia(0.3);
         }
 
         .info-box {
-            background: linear-gradient(135deg, #f4e4cc 0%, #e8d5c4 100%);
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            border: 2px dashed #c17a3a;
-            box-shadow: 
-                0 4px 6px rgba(0,0,0,0.1),
-                inset 0 0 20px rgba(255,255,255,0.5);
+            background: linear-gradient(135deg, #f8f9ff 0%, #faf5ff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(102,126,234,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102,126,234,0.2);
         }
 
         .info-box h2 {
-            font-family: 'Courier Prime', monospace;
-            color: #8b5a2b;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #667eea;
             margin-bottom: 15px;
-            font-size: 1.3em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 1.5em;
         }
 
         .info-box p {
             font-size: 1.1em;
             line-height: 1.8;
             margin-bottom: 10px;
+            color: #4a5568;
         }
 
         .info-box strong {
-            color: #c17a3a;
+            color: #764ba2;
+            font-weight: 600;
+        }
+
+        .info-box a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .info-box a:hover {
+            border-bottom-color: #667eea;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -23px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px #667eea;
+        }
+
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: -18px;
+            top: 17px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .guest-list {
+            background: linear-gradient(135deg, #fff5f7 0%, #fff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border-left: 5px solid #f093fb;
+            box-shadow: 0 5px 15px rgba(240,147,251,0.1);
+        }
+
+        .guest-list h2 {
+            font-family: 'Poppins', sans-serif;
             font-weight: 700;
+            color: #764ba2;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        .guest-category {
+            margin-bottom: 25px;
+        }
+
+        .guest-category h3 {
+            font-size: 1.2em;
+            color: #667eea;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .guest-count {
+            background: #667eea;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .guest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .guest-item {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .guest-item:hover {
+            transform: translateX(5px);
+            border-color: #667eea;
+            box-shadow: 0 4px 10px rgba(102,126,234,0.2);
         }
 
         .calendar-btn {
             display: block;
             width: 100%;
-            max-width: 350px;
+            max-width: 400px;
             margin: 30px auto;
-            padding: 18px 30px;
-            background: linear-gradient(135deg, #d4a574 0%, #c17a3a 100%);
-            color: #fef9f3;
+            padding: 20px 35px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
             text-decoration: none;
             text-align: center;
             border-radius: 50px;
-            font-family: 'Courier Prime', monospace;
+            font-family: 'Poppins', sans-serif;
             font-size: 1.2em;
             font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            box-shadow: 
-                0 6px 15px rgba(193,122,58,0.4),
-                inset 0 -2px 5px rgba(0,0,0,0.2);
+            box-shadow:
+                0 10px 30px rgba(102,126,234,0.4),
+                inset 0 -3px 10px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-            border: 3px solid #8b5a2b;
+            border: none;
         }
 
         .calendar-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 
-                0 8px 20px rgba(193,122,58,0.5),
-                inset 0 -2px 5px rgba(0,0,0,0.2);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow:
+                0 15px 40px rgba(102,126,234,0.5),
+                inset 0 -3px 10px rgba(0,0,0,0.2);
         }
 
         .calendar-btn:active {
-            transform: translateY(0);
+            transform: translateY(-1px) scale(1.01);
         }
 
         .form-section {
             margin-top: 40px;
-            padding: 25px;
-            background: rgba(244,228,204,0.3);
-            border-radius: 10px;
-            border: 2px solid #e8d5c4;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #faf5ff 100%);
+            border-radius: 15px;
+            border: 2px solid #e9d8fd;
         }
 
         .form-section h2 {
-            font-family: 'Courier Prime', monospace;
-            color: #8b5a2b;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #667eea;
             margin-bottom: 20px;
-            font-size: 1.5em;
+            font-size: 1.8em;
             text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .vintage-divider {
+        .party-divider {
             text-align: center;
-            margin: 30px 0;
-            font-size: 1.5em;
-            color: #d4a574;
+            margin: 40px 0;
+            font-size: 2em;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-weight: 600;
         }
 
         @media (max-width: 600px) {
             .container {
-                border-radius: 10px;
-                border-width: 2px;
+                border-radius: 15px;
             }
 
             .banner {
-                height: 180px;
+                height: 200px;
             }
 
             .content {
@@ -184,15 +318,14 @@
             }
 
             h1 {
-                font-size: 1.8em;
-                letter-spacing: 1px;
+                font-size: 2em;
             }
 
             .emoji-line {
-                font-size: 1.5em;
+                font-size: 1.8em;
             }
 
-            .info-box {
+            .info-box, .guest-list {
                 padding: 20px;
             }
 
@@ -202,11 +335,19 @@
 
             .calendar-btn {
                 font-size: 1em;
-                padding: 15px 25px;
+                padding: 16px 28px;
             }
 
             .form-section {
-                padding: 15px;
+                padding: 20px;
+            }
+
+            .guest-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 25px;
             }
         }
     </style>
@@ -219,32 +360,112 @@
 
         <div class="content">
             <h1>Miro og KB's Bursdag</h1>
-            <div class="emoji-line">🎂 🎉 🥳</div>
+            <div class="emoji-line">🎉 🥳 🎊 💃 🕺</div>
 
             <div class="info-box">
-                <h2>📅 Når og Hvor?</h2>
-                <p><strong>Dato:</strong> 14. november</p>
-                <p><strong>Badstue:</strong> 17:30 - 20:00<br>Trosten badstue på Sukkerbiten</p>
-                <p><strong>Dra ut på byen:</strong> 20:00 → <br>(mer info kommer)</p>
+                <h2>🗓️ Dagsplan - 14. november</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <p><strong>16:30 - Mat 🍜</strong><br>
+                        Vi spiser noe kjapp mat på <span class="highlight">Streetfood Barcode</span>. Bli gjerne med!</p>
+                    </div>
+                    <div class="timeline-item">
+                        <p><strong>17:30 - Badstue 🧖‍♂️💨</strong><br>
+                        Trosten badstue på Sukkerbiten. Kos oss med varme og avslapping!</p>
+                    </div>
+                    <div class="timeline-item">
+                        <p><strong>20:00 - Klubb-kveld! 🎨✨</strong><br>
+                        Vi drar på <span class="highlight">Much Museet Late Night</span>! Hvis køen er for lang, går vi til <strong>Oslo Mekaniske Verksted</strong>.<br>
+                        <a href="https://www.munch.no/en/whats-on/late-night-1411/" target="_blank">→ Se mer om Munch Late Night her</a></p>
+                    </div>
+                </div>
             </div>
 
             <div class="info-box">
-                <h2>💝 Viktig Info</h2>
-                <p>Vi ønsker ikke noen gaver, men heller at dere er med å spleise på badstue. 😁</p>
+                <h2>💡 Smart å vite</h2>
+                <p>🎁 <strong>Gaver:</strong> Vi ønsker ikke noen gaver, men heller at dere er med å spleise på badstue!</p>
+                <p>🎒 <strong>Bagasje:</strong> For de som ønsker å legge fra seg bag kan vi stikke innom oppbevaringsskapene på Oslo S etter badstuen.</p>
+            </div>
+
+            <div class="guest-list">
+                <h2>🎊 Hvem kommer?</h2>
+
+                <div class="guest-category">
+                    <h3>
+                        🧖‍♂️ Badstue-gjengen
+                        <span class="guest-count" id="sauna-count">18</span>
+                    </h3>
+                    <div class="guest-grid" id="sauna-guests"></div>
+                </div>
+
+                <div class="guest-category">
+                    <h3>
+                        🎉 Møter oss etter
+                        <span class="guest-count" id="out-count">3</span>
+                    </h3>
+                    <div class="guest-grid" id="out-guests"></div>
+                </div>
             </div>
 
             <a href="birthday2025.ics" download class="calendar-btn">
                 📆 Legg til i kalender
             </a>
 
-            <div class="vintage-divider">✦ ✦ ✦</div>
+            <div class="party-divider">✨ 🎈 ✨</div>
 
             <div class="form-section">
                 <h2>🎊 Gi oss beskjed!</h2>
+                <p style="text-align: center; margin-bottom: 20px; color: #4a5568;">
+                    Bekreft at du kommer, så oppdaterer vi gjestelisten over! 👆
+                </p>
                 <iframe data-tally-src="https://tally.so/embed/3yWlq4?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="625" frameborder="0" marginheight="0" marginwidth="0" title="Miro og KB feirer bursdag i badstue 💨🌡️🥵"></iframe>
                 <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
             </div>
         </div>
     </div>
+
+    <script src="guests.js"></script>
+    <script>
+        // Populate guest lists
+        const saunaContainer = document.getElementById('sauna-guests');
+        const outContainer = document.getElementById('out-guests');
+
+        guests.sauna.forEach(guest => {
+            const div = document.createElement('div');
+            div.className = 'guest-item';
+            div.textContent = guest;
+            saunaContainer.appendChild(div);
+        });
+
+        guests.goingOut.forEach(guest => {
+            const div = document.createElement('div');
+            div.className = 'guest-item';
+            div.textContent = guest;
+            outContainer.appendChild(div);
+        });
+
+        // Update counts
+        document.getElementById('sauna-count').textContent = guests.totalSauna;
+        document.getElementById('out-count').textContent = guests.totalGoingOut;
+
+        // Add floating confetti effect
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.background = ['#667eea', '#764ba2', '#f093fb', '#ffd700'][Math.floor(Math.random() * 4)];
+            confetti.style.animationDelay = Math.random() * 4 + 's';
+            confetti.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            document.body.appendChild(confetti);
+
+            setTimeout(() => confetti.remove(), 7000);
+        }
+
+        // Create confetti periodically
+        setInterval(createConfetti, 300);
+        for(let i = 0; i < 20; i++) {
+            setTimeout(createConfetti, i * 150);
+        }
+    </script>
 </body>
 </html>
